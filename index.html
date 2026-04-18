@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keep Alive ImageKit</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+
+    img {
+      width: 220px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    p {
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>ImageKit Activity</h2>
+  <p>Halaman ini akan refresh otomatis (ringan & aman)</p>
+
+  <!-- 🔥 GANTI URL INI -->
+  <img id="img" src="https://ik.imagekit.io/3gmd2jdn4/1000165252_pUijYg3Yd.jpg?updatedAt=1755141364051">
+
+  <script>
+    // ⏱️ Refresh tiap 6 jam (aman, tidak spam)
+    const interval = 6 * 60 * 60 * 1000;
+
+    setInterval(() => {
+      const img = document.getElementById("img");
+
+      // trick supaya benar-benar request ulang (anti cache)
+      img.src = img.src.split("?")[0] + "?t=" + new Date().getTime();
+
+      console.log("Reload gambar...");
+    }, interval);
+  </script>
+
+</body>
+</html>
