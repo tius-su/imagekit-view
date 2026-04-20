@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Keep Alive ImageKit - Zoomable</title>
+  
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#f4f4f4">
+  <link rel="apple-touch-icon" href="logo.jpg">
 
   <style>
     body {
@@ -41,7 +45,7 @@
 
     /* --- Style untuk Modal Zoom --- */
     .modal {
-      display: none; /* Sembunyi secara default */
+      display: none;
       position: fixed;
       z-index: 1000;
       padding-top: 50px;
@@ -67,7 +71,6 @@
       to {transform: scale(1)}
     }
 
-    /* Tombol Close */
     .close {
       position: absolute;
       top: 20px;
@@ -86,15 +89,14 @@
 <body>
 
   <h2>TIUS</h2>
-  
 
   <div class="image-grid">
      <img class="image-item" src="https://ik.imagekit.io/3gmd2jdn4/1000165252_pUijYg3Yd.jpg?updatedAt=1755141364051" onclick="openModal(this.src)">
-    <img class="image-item" src="https://ik.imagekit.io/3gmd2jdn4/1000165250_4AfrcnKa3.jpg?updatedAt=1755140508083" onclick="openModal(this.src)">
-      <img class="image-item" src="https://ik.imagekit.io/3gmd2jdn4/1000165257_P9VT6q8O6.jpg?updatedAt=1755141423278" onclick="openModal(this.src)">
-    <img class="image-item" src="https://ik.imagekit.io/3gmd2jdn4/1000165251_vxOUz6M5y.jpg?updatedAt=1755141341849" onclick="openModal(this.src)">
-      <img class="image-item" src="https://ik.imagekit.io/3gmd2jdn4/1000165242_XDox94A_4.jpg?updatedAt=1755141209730" onclick="openModal(this.src)">
-    <img class="image-item" src="https://ik.imagekit.io/3gmd2jdn4/1000165245_VNUZFAV8S.jpg?updatedAt=1755140910433" onclick="openModal(this.src)">
+     <img class="image-item" src="https://ik.imagekit.io/3gmd2jdn4/1000165250_4AfrcnKa3.jpg?updatedAt=1755140508083" onclick="openModal(this.src)">
+     <img class="image-item" src="https://ik.imagekit.io/3gmd2jdn4/1000165257_P9VT6q8O6.jpg?updatedAt=1755141423278" onclick="openModal(this.src)">
+     <img class="image-item" src="https://ik.imagekit.io/3gmd2jdn4/1000165251_vxOUz6M5y.jpg?updatedAt=1755141341849" onclick="openModal(this.src)">
+     <img class="image-item" src="https://ik.imagekit.io/3gmd2jdn4/1000165242_XDox94A_4.jpg?updatedAt=1755141209730" onclick="openModal(this.src)">
+     <img class="image-item" src="https://ik.imagekit.io/3gmd2jdn4/1000165245_VNUZFAV8S.jpg?updatedAt=1755140910433" onclick="openModal(this.src)">
   </div>
 
   <div id="myModal" class="modal" onclick="this.style.display='none'">
@@ -103,9 +105,19 @@
   </div>
 
   <script>
+    // Fungsi Modal
     function openModal(src) {
       document.getElementById("myModal").style.display = "block";
       document.getElementById("imgZoom").src = src;
+    }
+
+    // Registrasi Service Worker untuk PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(reg => console.log('SW Registered'))
+          .catch(err => console.log('SW Registration Failed', err));
+      });
     }
   </script>
 
