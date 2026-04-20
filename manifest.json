@@ -1,0 +1,16 @@
+{
+  "name": "Tius Keep Alive",
+  "short_name": "TiusPWA",
+  "description": "Aplikasi Keep Alive ImageKit",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f4f4f4",
+  "theme_color": "#f4f4f4",
+  "icons": [
+    {
+      "src": "logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
